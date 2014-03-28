@@ -103,17 +103,25 @@ containing a value of this type.
     }
     public static final class id {
         public static final int accordion=0x7f04000b;
-        public static final int action_settings=0x7f04000d;
+        public static final int action_settings=0x7f040015;
         public static final int cubein=0x7f040002;
         public static final int cubeout=0x7f040003;
         public static final int fliphorizontal=0x7f040005;
         public static final int flipvertical=0x7f040004;
+        public static final int home_catory_view=0x7f04000f;
+        public static final int home_fl=0x7f040011;
+        public static final int home_fragment=0x7f04000c;
+        public static final int home_history_view=0x7f04000d;
+        public static final int home_ho_sv=0x7f040010;
+        public static final int home_main_view=0x7f04000e;
+        public static final int home_main_viewpager=0x7f040014;
+        public static final int home_viewpager=0x7f040012;
+        public static final int main_scrollView=0x7f040013;
         public static final int rotatedown=0x7f04000a;
         public static final int rotateup=0x7f040009;
         public static final int stack=0x7f040006;
         public static final int standard=0x7f040000;
         public static final int tablet=0x7f040001;
-        public static final int textview=0x7f04000c;
         public static final int zoomin=0x7f040007;
         public static final int zoomout=0x7f040008;
     }
@@ -121,6 +129,7 @@ containing a value of this type.
         public static final int activity_home=0x7f030000;
         public static final int activity_splash=0x7f030001;
         public static final int fragment_home=0x7f030002;
+        public static final int home_main=0x7f030003;
     }
     public static final class menu {
         public static final int splash=0x7f0a0000;
@@ -129,6 +138,9 @@ containing a value of this type.
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
         public static final int hello_world=0x7f070002;
+        public static final int home_catory=0x7f070005;
+        public static final int home_history=0x7f070003;
+        public static final int home_main=0x7f070004;
     }
     public static final class style {
         /** 

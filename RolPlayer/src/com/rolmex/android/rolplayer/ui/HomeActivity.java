@@ -1,25 +1,28 @@
 package com.rolmex.android.rolplayer.ui;
 
 import com.rolmex.android.rolplayer.R;
+import com.rolmex.android.rolplayer.fragment.HomeFragment;
 import com.wole56.sdk.Video;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import android.widget.TextView;
 
-public class HomeActivity extends Activity{
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+
+
+public class HomeActivity extends FragmentActivity{
     
-    private TextView textView;
+    private HomeFragment home_fragment;
+    
     
     public Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg){
             switch(msg.what){
                 case 1:
-                    textView.setText(msg.obj+"");
                     Log.e("antking", msg.obj+"");
                     break;
             }
@@ -30,7 +33,11 @@ public class HomeActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        textView = (TextView)this.findViewById(R.id.textview);
+        
+        FragmentTransaction t = this.getSupportFragmentManager().beginTransaction();
+        home_fragment = new HomeFragment();
+        t.replace(R.id.home_fragment, home_fragment);
+        t.commit();
         loadData();
         
     }
