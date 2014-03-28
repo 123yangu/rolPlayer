@@ -2,17 +2,22 @@ package com.rolmex.android.rolplayer.fragment;
 
 import com.rolmex.android.rolplayer.R;
 import com.rolmex.android.rolplayer.widget.JazzyViewPager;
+import com.rolmex.android.rolplayer.widget.JazzyViewPager.TransitionEffect;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     
@@ -30,6 +35,8 @@ public class HomeFragment extends Fragment {
     private int item_width; 
     //滑动游标
     private TextView slidView;
+    
+    private ArrayList<Fragment> pagerItemList = new ArrayList<Fragment>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +66,13 @@ public class HomeFragment extends Fragment {
         slidView.setBackgroundResource(R.color.holo_blue);
         fl.addView(slidView);
         
+        HomeMain main_fragment = new HomeMain();
+        pagerItemList.add(main_fragment);
+        
+        viewPager.setTransitionEffect(TransitionEffect.FlipHorizontal);
+        MyAdapter adapter = new MyAdapter(getFragmentManager());
+        viewPager.setAdapter(adapter);
+        
         return mView;
     }
 
@@ -67,7 +81,32 @@ public class HomeFragment extends Fragment {
         // TODO Auto-generated method stub
         super.onStart();
     }
-    
+    public class MyAdapter extends FragmentPagerAdapter{
+
+        public MyAdapter(FragmentManager fm) {
+            super(fm);
+            // TODO Auto-generated constructor stub
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            // TODO Auto-generated method stub
+            Fragment fragment = null;
+            if(position<pagerItemList.size())
+                fragment = pagerItemList.get(position);
+            else
+                fragment = pagerItemList.get(0);
+            viewPager.setObjectForPosition(fragment, position);
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return pagerItemList.size();
+        }
+        
+    }
     
 
 }
