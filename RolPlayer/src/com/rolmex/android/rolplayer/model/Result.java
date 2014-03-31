@@ -11,8 +11,10 @@ public class Result {
     
     public String api;
     public String errno;
-    //热门视频
+    
     public List<HotItemBean> list;
+    
+   
 
     public Result(String err,String api,String errno){
         this.api = api;
