@@ -14,6 +14,12 @@ public class Result {
     
     public List<HotItemBean> list;
     
+    public String msg;
+    
+    public String status;
+    
+    public InfoItem info;
+    
    
 
     public Result(String err,String api,String errno){

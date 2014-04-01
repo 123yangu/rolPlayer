@@ -13,6 +13,7 @@ import com.rolmex.android.rolplayer.task.CommendTask;
 import com.rolmex.android.rolplayer.task.CommendTask.CTaskCallback;
 import com.rolmex.android.rolplayer.task.Task;
 import com.rolmex.android.rolplayer.task.Task.TaskCallback;
+import com.rolmex.android.rolplayer.ui.PlayActivity;
 import com.rolmex.android.rolplayer.utils.OutlineContainer;
 import com.rolmex.android.rolplayer.utils.Util;
 import com.rolmex.android.rolplayer.widget.JazzyViewPager;
@@ -21,6 +22,7 @@ import com.rolmex.android.rolplayer.widget.StreadyGridView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,6 +33,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
@@ -146,42 +150,59 @@ public class HomeMain extends Fragment {
         });
     }
     private void bindDSJData(CommendResult result){
+        if(result.list==null)
+            return;
         List<CommendItem> list = result.list;
         RecommendAdapter dsjAdapter = new RecommendAdapter(mContext,list);
         dsj_gridView.setAdapter(dsjAdapter);
     }
     private void bindDYData(CommendResult result){
+        if(result.list==null)
+            return;
         List<CommendItem> list = result.list;
         RecommendAdapter dyAdapter = new RecommendAdapter(mContext,list);
         dy_gridView.setAdapter(dyAdapter);
         
     }
     private void bindDMData(Result result){
+        if(result.list==null)
+            return;
         List<HotItemBean> list = result.list;
         ItemAdapter dmAdapter = new ItemAdapter(mContext,list);
         pk_gridView.setAdapter(dmAdapter);
     }
     private void bindYCData(Result result){
+        if(result.list==null)
+            return;
         List<HotItemBean> list = result.list;
         ItemAdapter ycAdapter = new ItemAdapter(mContext,list);
         yc_gridView.setAdapter(ycAdapter);
     }
     private void bindYYData(Result result){
+        if(result.list==null)
+            return;
         List<HotItemBean> list = result.list;
+        
         ItemAdapter yyAdapter = new ItemAdapter(mContext,list);
         yy_gridView.setAdapter(yyAdapter);
     }
     private void bindGXData(Result result){
+        if(result.list==null)
+            return;
         List<HotItemBean> list = result.list;
         ItemAdapter  gxAdapter = new ItemAdapter(mContext,list);
         gx_gridView.setAdapter(gxAdapter);
     }
     private void bindYLData(Result result){
+        if(result.list==null)
+            return;
         List<HotItemBean> list = result.list;
         ItemAdapter yuleAdapter= new ItemAdapter(mContext,list);
         yu_gridView.setAdapter(yuleAdapter);
     }
     private void bindData(Result result){
+        if(result.list==null)
+            return;
         List<HotItemBean> list = result.list;
         ItemAdapter hotAdapter = new ItemAdapter(mContext,list);
         hot_gridView.setAdapter(hotAdapter);
@@ -205,8 +226,36 @@ public class HomeMain extends Fragment {
         
         dsj_gridView = (StreadyGridView)view.findViewById(R.id.main_dsj_gridview);
        
+        hot_gridView.setOnItemClickListener(itemListener);
+        yu_gridView.setOnItemClickListener(itemListener);
+        gx_gridView.setOnItemClickListener(itemListener);
+        pk_gridView.setOnItemClickListener(itemListener);
+        yy_gridView.setOnItemClickListener(itemListener);
+        yc_gridView.setOnItemClickListener(itemListener);
+        dy_gridView.setOnItemClickListener(itemListener);
+        dsj_gridView.setOnItemClickListener(itemListener);
+        
+       
     }
-    
+    private OnItemClickListener itemListener = new OnItemClickListener(){
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            // TODO Auto-generated method stub
+            Object obj = parent.getAdapter().getItem(position);
+            Intent intent = new Intent(mContext,PlayActivity.class);
+            String uid = "";
+            if(obj instanceof HotItemBean){
+                 uid = ((HotItemBean)obj).vid;
+            }else if(obj instanceof CommendItem){
+                 uid  =((CommendItem)obj).vid;
+            }
+            Log.e("antking_vid", uid);
+            intent.putExtra("vid", uid);
+            startActivity(intent);
+        }
+        
+    };
     private void setupJazziness(TransitionEffect effect) {
 
         viewPager.setTransitionEffect(effect);

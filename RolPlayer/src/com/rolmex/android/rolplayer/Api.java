@@ -49,6 +49,27 @@ public class Api {
         }.execute();
         
     }
+    public static void getVideoAddr(final Context context,final String vid,TaskCallback callback){
+        new Task(callback){
+
+            @Override
+            protected Result doInBackground(Void... params) {
+                // TODO Auto-generated method stub
+                return getVideoAddr(context,vid);
+            }
+            
+        }.execute();
+    }
+    
+    public static Result getVideoAddr(Context context,String vid){
+        String response = Video.getVideoAddress(context, vid).toString();
+        Log.e("antking_addr", response);
+        Result result = getGson().fromJson(response, Result.class);
+        Log.e("antking_result", result.err+","+result.status);
+        
+        return ensureNotNull(result);
+    }
+    
     public static Result getHotView(Context context,String cid,String num,String page){
         String response = Video.getHotVideo(context, cid, num, page).toString();
         Result result = getGson().fromJson(response, Result.class);
