@@ -7,4 +7,5 @@
     
     <color name="holo_blue">#FFff0000</color>
     <color name="black">#FF000000</color>
+    <color name="half_translate">#9b000000</color>
 </resources>

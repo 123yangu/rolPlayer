@@ -15,6 +15,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -27,10 +29,12 @@ import io.vov.vitamio.utils.Log;
 import io.vov.vitamio.widget.VideoView;
 
 public class PlayActivity extends BaseActivity implements OnInfoListener, OnBufferingUpdateListener {
-    
+
     private RelativeLayout prepare_ly;
 
     private VideoView player_buffer;
+
+    private TextView player_title, player_btn_back, player_btn_start;
 
     private String path = "http://119.167.146.12/fcs126.56.com/flvdownload/28/18/13950338514hd_clear.flv.mp4?t=_vvdH13rtMTryFzRk7W70w&r=47460&e=1395996812&v=1&s=1&tt=344&sz=24137946&vid=109381429";
 
@@ -38,6 +42,8 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     private Uri uri;
 
     private boolean isStart;
+    
+    private SeekBar player_seekbar;
 
     private ProgressBar pb;
 
@@ -46,14 +52,47 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         // TODO Auto-generated method stub
         if (!LibsChecker.checkVitamioLibs(this))
             return;
-        player_buffer = (VideoView)this.findViewById(R.id.player_buffer);
-        prepare_ly = (RelativeLayout)this.findViewById(R.id.player_prepare_ly);
-        prepare_ly.setVisibility(View.GONE);
         Intent intent = getIntent();
+
         String vid = intent.getStringExtra("vid");
+        initUI();
         loadData(vid);
 
     }
+
+    private void initUI() {
+        player_buffer = (VideoView)this.findViewById(R.id.player_buffer);
+        prepare_ly = (RelativeLayout)this.findViewById(R.id.player_prepare_ly);
+        prepare_ly.setVisibility(View.GONE);
+
+        player_title = (TextView)this.findViewById(R.id.player_title);
+        player_btn_back = (TextView)this.findViewById(R.id.player_btn_back);
+        player_btn_start = (TextView)this.findViewById(R.id.play_btn_start);
+        
+        player_seekbar = (SeekBar)this.findViewById(R.id.player_seekbar);
+
+        player_btn_back.setOnClickListener(buttonListener);
+        player_btn_start.setOnClickListener(buttonListener);
+        
+    }
+
+    private View.OnClickListener buttonListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+            if (v == player_btn_back) {
+                player_buffer.stopPlayback();
+                finish();
+            }
+            if(v == player_btn_start){
+                playOrPause();
+                upStartBtnBg(isStart);
+                player_seekbar.setProgress((int)(player_buffer.getCurrentPosition()*100/player_buffer.getDuration()));
+            }
+
+        }
+    };
 
     private void loadData(String vid) {
         Api.getVideoAddr(getApplicationContext(), vid, new TaskCallback() {
@@ -73,6 +112,7 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         }
         Log.e(result.msg, "antking_info");
         InfoItem info = result.info;
+        player_title.setText(info.tags);
         List<FileItem> list = info.rfiles;
         Log.e(list.size() + "", list.size() + "");
         String path = "";
@@ -109,10 +149,35 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
                 }
             });
             prepare_ly.setVisibility(View.GONE);
-            player_buffer.start();
+            playerStart();
+           
         }
     }
-
+    private void playerStart(){
+        if(player_buffer.isPlaying())
+            return;
+        player_buffer.start();
+        isStart = true;
+    }
+    private void playerPause(){
+        player_buffer.pause();
+        isStart = false;
+    }
+    private void playOrPause(){
+        if(player_buffer.isPlaying()){
+            playerPause();
+        }else{
+            playerStart();
+        }
+    }
+    
+    private void upStartBtnBg(boolean isStart){
+        if(isStart){
+            player_btn_start.setBackground(this.getResources().getDrawable(R.drawable.play_detail_btn_suspend));
+        }else{
+            player_btn_start.setBackground(this.getResources().getDrawable(R.drawable.play_detail_btn_start));
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();

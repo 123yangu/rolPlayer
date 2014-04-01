@@ -1,51 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <LinearLayout 
+    android:layout_height="match_parent" >
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        <RelativeLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
-        >
-        <io.vov.vitamio.widget.VideoView
-            android:id="@+id/player_buffer"
+        android:orientation="vertical" >
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"           
-            ></io.vov.vitamio.widget.VideoView>
-        <RelativeLayout 
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@color/half_white"
-            android:layout_alignTop="@+id/player_buffer"
-            
-            >
-            <TextView 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="俺家讲得好"
-                android:layout_centerVertical="true"
-                />
+            android:layout_height="wrap_content" >
+
+            <io.vov.vitamio.widget.VideoView
+                android:id="@+id/player_buffer"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" >
+            </io.vov.vitamio.widget.VideoView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/player_buffer"
+                android:background="@color/half_translate" >
+
+                <TextView
+                    android:id="@+id/player_btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/play_details_btn_back" />
+
+                <TextView
+                    android:id="@+id/player_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/player_btn_back"
+                    android:text="俺家讲得好"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/player_buffer"
+                android:background="@color/half_translate" >
+
+                <TextView
+                    android:id="@+id/play_btn_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/play_detail_btn_suspend" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/play_btn_start"
+                    android:orientation="vertical" >
+
+                    <SeekBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/player_seekbar"
+                        android:max="100"
+                        >
+                    </SeekBar>
+                </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
     </LinearLayout>
-    <RelativeLayout 
+
+    <RelativeLayout
+        android:id="@+id/player_prepare_ly"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:id="@+id/player_prepare_ly"
-        >
-        <TextView 
+        android:background="@color/white" >
+
+        <TextView
             android:id="@+id/player_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="hahah"
             android:layout_centerInParent="true"
-            />
+            android:text="hahah" />
     </RelativeLayout>
 
 </FrameLayout>
