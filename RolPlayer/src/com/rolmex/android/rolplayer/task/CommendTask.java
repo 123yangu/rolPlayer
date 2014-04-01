@@ -6,11 +6,11 @@ import android.os.AsyncTask;
 
 public abstract class CommendTask extends AsyncTask<Void,Void,CommendResult>{
     
-    public interface TaskCallback{
+    public interface CTaskCallback{
         void onTaskComplete(CommendTask task,CommendResult result);
     }
-    private TaskCallback callback;
-    public CommendTask(TaskCallback callback){
+    private CTaskCallback callback;
+    public CommendTask(CTaskCallback callback){
         this.callback = callback;
     }
     @Override

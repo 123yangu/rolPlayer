@@ -1,6 +1,8 @@
 
 package com.rolmex.android.rolplayer.fragment;
 
+import com.rolmex.android.rolplayer.R;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,12 +13,13 @@ public class HomeCatory extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return null;
+        View mView = inflater.inflate(R.layout.home_catory, null);
+        return mView;
     }
 
     @Override
     public void onStart() {
-
+        super.onStart();
     }
 
 }

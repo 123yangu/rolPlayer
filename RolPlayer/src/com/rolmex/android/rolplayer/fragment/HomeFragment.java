@@ -6,11 +6,14 @@ import com.rolmex.android.rolplayer.widget.JazzyViewPager.TransitionEffect;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +38,8 @@ public class HomeFragment extends Fragment {
     private int item_width; 
     //滑动游标
     private TextView slidView;
+    
+
     
     private ArrayList<Fragment> pagerItemList = new ArrayList<Fragment>();
 
@@ -65,14 +70,17 @@ public class HomeFragment extends Fragment {
         slidView.setLayoutParams(new FrameLayout.LayoutParams(item_width, 6));
         slidView.setBackgroundResource(R.color.holo_blue);
         fl.addView(slidView);
-        
+        HomeHistory history_fragment = new HomeHistory();
+        pagerItemList.add(history_fragment);
         HomeMain main_fragment = new HomeMain();
         pagerItemList.add(main_fragment);
+        HomeCatory catory_gragment = new HomeCatory();
+        pagerItemList.add(catory_gragment);
         
-        viewPager.setTransitionEffect(TransitionEffect.FlipHorizontal);
+        
+        viewPager.setTransitionEffect(TransitionEffect.Accordion);
         MyAdapter adapter = new MyAdapter(getFragmentManager());
-        viewPager.setAdapter(adapter);
-        
+        viewPager.setAdapter(adapter);        
         return mView;
     }
 
@@ -80,6 +88,76 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
+        viewPager.setOnPageChangeListener(new OnPageChangeListener(){
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+                // TODO Auto-generated method stub
+               
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+                // TODO Auto-generated method stub
+               
+                if (arg1 > 0.0 && arg1<1.0)
+                    slidView.setTranslationX(item_width * arg1+arg0*item_width);
+            }
+
+            @Override
+            public void onPageSelected(int arg0) {
+                // TODO Auto-generated method stub
+
+                slidView.setTranslationX(item_width * arg0);
+                upTitle(arg0);
+            }
+            
+        });
+//         history_view,home_view,catory_view;
+        history_view.setOnClickListener(buttonListener);
+        home_view.setOnClickListener(buttonListener);
+        catory_view.setOnClickListener(buttonListener);
+        viewPager.setCurrentItem(1);
+    }
+    private View.OnClickListener buttonListener = new View.OnClickListener() {
+        
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+            if(v == history_view){
+                viewPager.setCurrentItem(0);
+                upTitle(0);
+            }
+            if(v == home_view){
+                viewPager.setCurrentItem(1);
+                upTitle(1);
+            }
+            if(v==catory_view){
+                viewPager.setCurrentItem(2);
+                upTitle(2);
+            }
+        }
+    };
+    private void upTitle(int index){
+        switch(index){
+            case 0:
+                history_view.setTextColor(mContext.getResources().getColor(R.color.holo_blue));
+                home_view.setTextColor(Color.BLACK);
+                catory_view.setTextColor(Color.BLACK);
+                break;
+            case 1:
+                history_view.setTextColor(Color.BLACK);
+                home_view.setTextColor(mContext.getResources().getColor(R.color.holo_blue));
+                catory_view.setTextColor(Color.BLACK);
+                break;
+            case 2:
+                history_view.setTextColor(Color.BLACK);
+                home_view.setTextColor(Color.BLACK);
+                catory_view.setTextColor(mContext.getResources().getColor(R.color.holo_blue));
+                break;
+                default:
+                    break;
+        }
     }
     public class MyAdapter extends FragmentPagerAdapter{
 

@@ -13,10 +13,9 @@
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/item_name"
-        android:maxLines="2"
+        android:id="@+id/item_name"        
+        android:lines="2"
         android:singleLine="false"
-        android:text="sjdklgajlsdgjl"
         android:background="@color/white"
         />
     

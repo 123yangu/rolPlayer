@@ -15,7 +15,7 @@ public final class R {
         public static final int slide_out_to_top=0x7f040003;
     }
     public static final class array {
-        public static final int jazzy_effects=0x7f090000;
+        public static final int jazzy_effects=0x7f0b0000;
     }
     public static final class attr {
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -216,12 +216,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int style=0x7f010013;
     }
     public static final class color {
-        public static final int bg_color_deep=0x7f080003;
-        public static final int black=0x7f080005;
-        public static final int grey=0x7f080002;
-        public static final int half_white=0x7f080000;
-        public static final int holo_blue=0x7f080004;
-        public static final int white=0x7f080001;
+        public static final int bg_color_deep=0x7f060006;
+        public static final int black=0x7f060008;
+        public static final int grey=0x7f060005;
+        public static final int half_white=0x7f060003;
+        public static final int holo_blue=0x7f060007;
+        public static final int mediacontroller_bg=0x7f060002;
+        public static final int mediacontroller_bg_pressed=0x7f060001;
+        public static final int transparent=0x7f060000;
+        public static final int white=0x7f060004;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -230,17 +233,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f060005;
-        public static final int activity_vertical_margin=0x7f060006;
-        public static final int header_footer_left_right_padding=0x7f060003;
-        public static final int header_footer_top_bottom_padding=0x7f060004;
-        public static final int indicator_corner_radius=0x7f060001;
-        public static final int indicator_internal_padding=0x7f060002;
-        public static final int indicator_right_padding=0x7f060000;
-        public static final int space_size_10=0x7f06000a;
-        public static final int space_size_5=0x7f060009;
-        public static final int text_size_16=0x7f060007;
-        public static final int text_size_18=0x7f060008;
+        public static final int activity_horizontal_margin=0x7f0a0005;
+        public static final int activity_vertical_margin=0x7f0a0006;
+        public static final int header_footer_left_right_padding=0x7f0a0003;
+        public static final int header_footer_top_bottom_padding=0x7f0a0004;
+        public static final int indicator_corner_radius=0x7f0a0001;
+        public static final int indicator_internal_padding=0x7f0a0002;
+        public static final int indicator_right_padding=0x7f0a0000;
+        public static final int space_size_10=0x7f0a000a;
+        public static final int space_size_5=0x7f0a0009;
+        public static final int text_size_16=0x7f0a0007;
+        public static final int text_size_18=0x7f0a0008;
     }
     public static final class drawable {
         public static final int default_ptr_flip=0x7f020000;
@@ -254,89 +257,136 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int indicator_bg_bottom=0x7f020008;
         public static final int indicator_bg_top=0x7f020009;
         public static final int launcher_default404=0x7f02000a;
-        public static final int top_drawable=0x7f02000b;
-        public static final int top_drawable1=0x7f02000c;
-        public static final int top_drawable2=0x7f02000d;
-        public static final int top_drawable3=0x7f02000e;
-        public static final int top_drawable4=0x7f02000f;
-        public static final int top_drawable5=0x7f020010;
-        public static final int top_drawable6=0x7f020011;
+        public static final int mediacontroller_button=0x7f02000b;
+        public static final int mediacontroller_pause=0x7f02000c;
+        public static final int mediacontroller_play=0x7f02000d;
+        public static final int scrubber_control_disabled_holo=0x7f02000e;
+        public static final int scrubber_control_focused_holo=0x7f02000f;
+        public static final int scrubber_control_normal_holo=0x7f020010;
+        public static final int scrubber_control_pressed_holo=0x7f020011;
+        public static final int scrubber_control_selector_holo=0x7f020012;
+        public static final int scrubber_primary_holo=0x7f020013;
+        public static final int scrubber_progress_horizontal_holo_dark=0x7f020014;
+        public static final int scrubber_secondary_holo=0x7f020015;
+        public static final int scrubber_track_holo_dark=0x7f020016;
+        public static final int top_drawable=0x7f020017;
+        public static final int top_drawable1=0x7f020018;
+        public static final int top_drawable2=0x7f020019;
+        public static final int top_drawable3=0x7f02001a;
+        public static final int top_drawable4=0x7f02001b;
+        public static final int top_drawable5=0x7f02001c;
+        public static final int top_drawable6=0x7f02001d;
     }
     public static final class id {
-        public static final int accordion=0x7f050017;
-        public static final int action_settings=0x7f05002c;
-        public static final int both=0x7f050003;
-        public static final int channel1_left=0x7f050025;
-        public static final int channel_left=0x7f050023;
-        public static final int cubein=0x7f05000e;
-        public static final int cubeout=0x7f05000f;
-        public static final int disabled=0x7f050000;
-        public static final int fl_inner=0x7f050027;
-        public static final int flip=0x7f050008;
-        public static final int fliphorizontal=0x7f050011;
-        public static final int flipvertical=0x7f050010;
-        public static final int gridview=0x7f050009;
-        public static final int home_catory_view=0x7f05001d;
-        public static final int home_fl=0x7f05001f;
-        public static final int home_fragment=0x7f050018;
-        public static final int home_history_view=0x7f05001b;
-        public static final int home_ho_sv=0x7f05001e;
-        public static final int home_main_scrollView=0x7f050021;
-        public static final int home_main_view=0x7f05001c;
-        public static final int home_main_viewpager=0x7f050022;
-        public static final int home_viewpager=0x7f050020;
-        public static final int hot_gridview=0x7f050024;
-        public static final int item_imag=0x7f050019;
-        public static final int item_name=0x7f05001a;
-        public static final int main_yule_gridview=0x7f050026;
-        public static final int manualOnly=0x7f050004;
-        public static final int pullDownFromTop=0x7f050005;
-        public static final int pullFromEnd=0x7f050002;
-        public static final int pullFromStart=0x7f050001;
-        public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_to_refresh_image=0x7f050028;
-        public static final int pull_to_refresh_progress=0x7f050029;
-        public static final int pull_to_refresh_sub_text=0x7f05002b;
-        public static final int pull_to_refresh_text=0x7f05002a;
-        public static final int rotate=0x7f050007;
-        public static final int rotatedown=0x7f050016;
-        public static final int rotateup=0x7f050015;
-        public static final int scrollview=0x7f05000b;
-        public static final int stack=0x7f050012;
-        public static final int standard=0x7f05000c;
-        public static final int tablet=0x7f05000d;
-        public static final int webview=0x7f05000a;
-        public static final int zoomin=0x7f050013;
-        public static final int zoomout=0x7f050014;
+        public static final int accordion=0x7f090017;
+        public static final int action_settings=0x7f09003d;
+        public static final int both=0x7f090003;
+        public static final int channel1_left=0x7f090025;
+        public static final int channel2_left=0x7f090027;
+        public static final int channel3_left=0x7f090029;
+        public static final int channel4_left=0x7f09002b;
+        public static final int channel5_left=0x7f09002d;
+        public static final int channel6_left=0x7f09002f;
+        public static final int channel7_left=0x7f090031;
+        public static final int channel_left=0x7f090023;
+        public static final int cubein=0x7f09000e;
+        public static final int cubeout=0x7f09000f;
+        public static final int disabled=0x7f090000;
+        public static final int fl_inner=0x7f090038;
+        public static final int flip=0x7f090008;
+        public static final int fliphorizontal=0x7f090011;
+        public static final int flipvertical=0x7f090010;
+        public static final int gridview=0x7f090009;
+        public static final int home_catory_view=0x7f09001d;
+        public static final int home_fl=0x7f09001f;
+        public static final int home_fragment=0x7f090018;
+        public static final int home_history_view=0x7f09001b;
+        public static final int home_ho_sv=0x7f09001e;
+        public static final int home_main_scrollView=0x7f090021;
+        public static final int home_main_view=0x7f09001c;
+        public static final int home_main_viewpager=0x7f090022;
+        public static final int home_viewpager=0x7f090020;
+        public static final int hot_gridview=0x7f090024;
+        public static final int item_imag=0x7f090019;
+        public static final int item_name=0x7f09001a;
+        public static final int main_dsj_gridview=0x7f090032;
+        public static final int main_dy_gridview=0x7f090030;
+        public static final int main_gx_gridview=0x7f090028;
+        public static final int main_pk_gridview=0x7f09002a;
+        public static final int main_yc_gridview=0x7f09002e;
+        public static final int main_yule_gridview=0x7f090026;
+        public static final int main_yy_gridview=0x7f09002c;
+        public static final int manualOnly=0x7f090004;
+        public static final int mediacontroller_file_name=0x7f090037;
+        public static final int mediacontroller_play_pause=0x7f090033;
+        public static final int mediacontroller_seekbar=0x7f090036;
+        public static final int mediacontroller_time_current=0x7f090034;
+        public static final int mediacontroller_time_total=0x7f090035;
+        public static final int pullDownFromTop=0x7f090005;
+        public static final int pullFromEnd=0x7f090002;
+        public static final int pullFromStart=0x7f090001;
+        public static final int pullUpFromBottom=0x7f090006;
+        public static final int pull_to_refresh_image=0x7f090039;
+        public static final int pull_to_refresh_progress=0x7f09003a;
+        public static final int pull_to_refresh_sub_text=0x7f09003c;
+        public static final int pull_to_refresh_text=0x7f09003b;
+        public static final int rotate=0x7f090007;
+        public static final int rotatedown=0x7f090016;
+        public static final int rotateup=0x7f090015;
+        public static final int scrollview=0x7f09000b;
+        public static final int stack=0x7f090012;
+        public static final int standard=0x7f09000c;
+        public static final int tablet=0x7f09000d;
+        public static final int webview=0x7f09000a;
+        public static final int zoomin=0x7f090013;
+        public static final int zoomout=0x7f090014;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_splash=0x7f030001;
         public static final int adapter_item=0x7f030002;
         public static final int fragment_home=0x7f030003;
-        public static final int home_main=0x7f030004;
-        public static final int pull_to_refresh_header_horizontal=0x7f030005;
-        public static final int pull_to_refresh_header_vertical=0x7f030006;
+        public static final int home_catory=0x7f030004;
+        public static final int home_main=0x7f030005;
+        public static final int mediacontroller=0x7f030006;
+        public static final int pull_to_refresh_header_horizontal=0x7f030007;
+        public static final int pull_to_refresh_header_vertical=0x7f030008;
     }
     public static final class menu {
-        public static final int splash=0x7f0b0000;
+        public static final int splash=0x7f0c0000;
+    }
+    public static final class raw {
+        public static final int libarm=0x7f050000;
     }
     public static final class string {
-        public static final int action_settings=0x7f070007;
-        public static final int app_name=0x7f070006;
-        public static final int hello_world=0x7f070008;
-        public static final int home_catory=0x7f07000b;
-        public static final int home_history=0x7f070009;
-        public static final int home_main=0x7f07000a;
+        public static final int VideoView_error_button=0x7f07000b;
+        public static final int VideoView_error_text_invalid_progressive_playback=0x7f070009;
+        public static final int VideoView_error_text_unknown=0x7f07000a;
+        public static final int VideoView_error_title=0x7f070008;
+        public static final int action_settings=0x7f070014;
+        public static final int app_name=0x7f070013;
+        public static final int hello_world=0x7f070015;
+        public static final int home_catory=0x7f070018;
+        public static final int home_history=0x7f070016;
+        public static final int home_main=0x7f070017;
+        public static final int mediacontroller_play_pause=0x7f07000c;
+        public static final int permission_group_tools_description=0x7f070003;
+        public static final int permission_group_tools_label=0x7f070002;
+        public static final int permission_receive_messages_description=0x7f070005;
+        public static final int permission_receive_messages_label=0x7f070004;
+        public static final int permission_write_providers_description=0x7f070007;
+        public static final int permission_write_providers_label=0x7f070006;
         /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
          */
-        public static final int pull_to_refresh_from_bottom_pull_label=0x7f070003;
-        public static final int pull_to_refresh_from_bottom_refreshing_label=0x7f070005;
-        public static final int pull_to_refresh_from_bottom_release_label=0x7f070004;
-        public static final int pull_to_refresh_pull_label=0x7f070000;
-        public static final int pull_to_refresh_refreshing_label=0x7f070002;
-        public static final int pull_to_refresh_release_label=0x7f070001;
+        public static final int pull_to_refresh_from_bottom_pull_label=0x7f070010;
+        public static final int pull_to_refresh_from_bottom_refreshing_label=0x7f070012;
+        public static final int pull_to_refresh_from_bottom_release_label=0x7f070011;
+        public static final int pull_to_refresh_pull_label=0x7f07000d;
+        public static final int pull_to_refresh_refreshing_label=0x7f07000f;
+        public static final int pull_to_refresh_release_label=0x7f07000e;
+        public static final int vitamio_init_decoders=0x7f070001;
+        public static final int vitamio_library_app_name=0x7f070000;
     }
     public static final class style {
         /** 
@@ -360,11 +410,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0a0000;
+        public static final int AppBaseTheme=0x7f080002;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0a0001;
+        public static final int AppTheme=0x7f080003;
+        public static final int MediaController_SeekBar=0x7f080000;
+        public static final int MediaController_Text=0x7f080001;
     }
     public static final class styleable {
         /** Attributes that can be used with a CircleImageView.

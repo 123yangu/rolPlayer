@@ -9,11 +9,14 @@ import com.google.gson.JsonParseException;
 import com.rolmex.android.rolplayer.model.CommendResult;
 import com.rolmex.android.rolplayer.model.HotResult;
 import com.rolmex.android.rolplayer.model.Result;
+import com.rolmex.android.rolplayer.task.CommendTask;
+import com.rolmex.android.rolplayer.task.CommendTask.CTaskCallback;
 import com.rolmex.android.rolplayer.task.Task;
 import com.rolmex.android.rolplayer.task.Task.TaskCallback;
 import com.wole56.sdk.Video;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.lang.reflect.Type;
 import java.util.Date;
@@ -34,7 +37,16 @@ public class Api {
         }.execute();
     }
     
-    public static void getRecommendVideo(final Context context,final String mid,final String num,final String page,TaskCallback callback){
+    public static void getRecommendVideo(final Context context,final String mid,final String num,final String page,CTaskCallback callback){
+        new CommendTask(callback){
+
+            @Override
+            protected CommendResult doInBackground(Void... params) {
+                // TODO Auto-generated method stub
+                return getRecommendView(context,mid,num,page);
+            }
+            
+        }.execute();
         
     }
     public static Result getHotView(Context context,String cid,String num,String page){
@@ -44,6 +56,7 @@ public class Api {
     }
     public static CommendResult getRecommendView(Context context,String mid,String num,String page){
         String response = Video.getRecommendVideo(context, mid, num, page).toString();
+      
         CommendResult  result = getGson().fromJson(response, CommendResult.class);
         return ensureNotNull(result);
     }

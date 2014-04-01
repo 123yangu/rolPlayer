@@ -11,7 +11,7 @@
         <com.rolmex.android.rolplayer.widget.JazzyViewPager
             android:id="@+id/home_main_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="200dp" >
+            android:layout_height="150dp" >
         </com.rolmex.android.rolplayer.widget.JazzyViewPager>
 
         <LinearLayout
@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp" >
+                android:layout_height="150dp" >
             </LinearLayout>
             <!-- 最人气节目 -->
 
@@ -113,6 +113,277 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/main_yule_gridview"
                 android:numColumns="2"
+                android:horizontalSpacing="@dimen/space_size_10"
+                android:verticalSpacing="@dimen/space_size_10"
+                ></com.rolmex.android.rolplayer.widget.StreadyGridView>
+             <!-- 搞笑 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_size_5"
+                android:paddingTop="@dimen/space_size_5" >
+
+                <ImageView
+                    android:id="@+id/channel2_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_channel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/channel2_left"
+                    android:layout_marginLeft="@dimen/space_size_5"
+                    android:layout_centerVertical="true"
+                    android:text="搞笑"
+                    android:textSize="@dimen/text_size_16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_channel_more_normal" >
+                </ImageView>
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/half_white"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+            <com.rolmex.android.rolplayer.widget.StreadyGridView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_gx_gridview"
+                android:numColumns="2"
+                android:horizontalSpacing="@dimen/space_size_10"
+                android:verticalSpacing="@dimen/space_size_10"
+                ></com.rolmex.android.rolplayer.widget.StreadyGridView>
+             <!-- 拍客 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_size_5"
+                android:paddingTop="@dimen/space_size_5" >
+
+                <ImageView
+                    android:id="@+id/channel3_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_channel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/channel3_left"
+                    android:layout_marginLeft="@dimen/space_size_5"
+                    android:layout_centerVertical="true"
+                    android:text="动漫"
+                    android:textSize="@dimen/text_size_16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_channel_more_normal" >
+                </ImageView>
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/half_white"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+            <com.rolmex.android.rolplayer.widget.StreadyGridView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_pk_gridview"
+                android:numColumns="2"
+                android:horizontalSpacing="@dimen/space_size_10"
+                android:verticalSpacing="@dimen/space_size_10"
+                ></com.rolmex.android.rolplayer.widget.StreadyGridView>
+            
+             <!-- 音乐 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_size_5"
+                android:paddingTop="@dimen/space_size_5" >
+
+                <ImageView
+                    android:id="@+id/channel4_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_channel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/channel4_left"
+                    android:layout_marginLeft="@dimen/space_size_5"
+                    android:layout_centerVertical="true"
+                    android:text="音乐"
+                    android:textSize="@dimen/text_size_16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_channel_more_normal" >
+                </ImageView>
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/half_white"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+            <com.rolmex.android.rolplayer.widget.StreadyGridView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_yy_gridview"
+                android:numColumns="2"
+                android:horizontalSpacing="@dimen/space_size_10"
+                android:verticalSpacing="@dimen/space_size_10"
+                ></com.rolmex.android.rolplayer.widget.StreadyGridView>
+             <!-- 原创 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_size_5"
+                android:paddingTop="@dimen/space_size_5" >
+
+                <ImageView
+                    android:id="@+id/channel5_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_channel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/channel5_left"
+                    android:layout_marginLeft="@dimen/space_size_5"
+                    android:layout_centerVertical="true"
+                    android:text="原创"
+                    android:textSize="@dimen/text_size_16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_channel_more_normal" >
+                </ImageView>
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/half_white"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+            <com.rolmex.android.rolplayer.widget.StreadyGridView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_yc_gridview"
+                android:numColumns="2"
+                android:horizontalSpacing="@dimen/space_size_10"
+                android:verticalSpacing="@dimen/space_size_10"
+                ></com.rolmex.android.rolplayer.widget.StreadyGridView>
+             <!-- 电影 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_size_5"
+                android:paddingTop="@dimen/space_size_5" >
+
+                <ImageView
+                    android:id="@+id/channel6_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_channel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/channel6_left"
+                    android:layout_marginLeft="@dimen/space_size_5"
+                    android:layout_centerVertical="true"
+                    android:text="电影"
+                    android:textSize="@dimen/text_size_16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_channel_more_normal" >
+                </ImageView>
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/half_white"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+            <com.rolmex.android.rolplayer.widget.StreadyGridView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_dy_gridview"
+                android:numColumns="3"
+                android:horizontalSpacing="@dimen/space_size_10"
+                android:verticalSpacing="@dimen/space_size_10"
+                ></com.rolmex.android.rolplayer.widget.StreadyGridView>
+            <!-- 电视剧 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_size_5"
+                android:paddingTop="@dimen/space_size_5" >
+
+                <ImageView
+                    android:id="@+id/channel7_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_channel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/channel7_left"
+                    android:layout_marginLeft="@dimen/space_size_5"
+                    android:layout_centerVertical="true"
+                    android:text="电视剧"
+                    android:textSize="@dimen/text_size_16" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_channel_more_normal" >
+                </ImageView>
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/half_white"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+            <com.rolmex.android.rolplayer.widget.StreadyGridView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_dsj_gridview"
+                android:numColumns="3"
                 android:horizontalSpacing="@dimen/space_size_10"
                 android:verticalSpacing="@dimen/space_size_10"
                 ></com.rolmex.android.rolplayer.widget.StreadyGridView>
