@@ -88,7 +88,6 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         initUI();
         loadData(vid);
         mGestureDetector = new GestureDetector(this, new MyGestureListener());
-
         myHandler.post(SeekBarUp);
 
     }
