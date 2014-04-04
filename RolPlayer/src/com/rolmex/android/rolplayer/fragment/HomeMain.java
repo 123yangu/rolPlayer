@@ -37,6 +37,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
 
 import java.util.List;
 
@@ -53,6 +54,8 @@ public class HomeMain extends Fragment {
     
     private Resources res;
     
+    private RelativeLayout hot_channel_ly;
+    
     private StreadyGridView hot_gridView,yu_gridView,gx_gridView,pk_gridView,yy_gridView,yc_gridView,dy_gridView,dsj_gridView;
 
     @Override
@@ -63,6 +66,7 @@ public class HomeMain extends Fragment {
         scrollView = (PullToRefreshScrollView)mView.findViewById(R.id.home_main_scrollView);
         viewPager = (JazzyViewPager)mView.findViewById(R.id.home_main_viewpager);
         setupJazziness(TransitionEffect.Accordion);
+        initUI(mView);
         initGridView(mView);
         
       
@@ -74,7 +78,18 @@ public class HomeMain extends Fragment {
         loadData();
          super.onStart();
     }
-    
+    private void initUI(View view){
+        hot_channel_ly = (RelativeLayout)view.findViewById(R.id.hot_channel_ly);
+        hot_channel_ly.setOnClickListener(buttonListener);
+    }
+    private View.OnClickListener buttonListener = new View.OnClickListener() {
+        
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+            
+        }
+    };
     private void loadData(){
         Api.getHotVideo(mContext, Util.HOT_CHANNEL, "4", "0", new TaskCallback(){
 
