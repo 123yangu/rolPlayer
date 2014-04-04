@@ -12,12 +12,20 @@ import com.rolmex.android.rolplayer.task.Task.TaskCallback;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.List;
 
 import io.vov.vitamio.LibsChecker;
@@ -42,10 +50,30 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     private Uri uri;
 
     private boolean isStart;
-    
+
     private SeekBar player_seekbar;
 
     private ProgressBar pb;
+    
+    
+    
+    private GestureDetector mGestureDetector;
+    
+    private RelativeLayout player_top_ly,player_bottom_ly;
+    
+    private Button suspend_btn;
+
+    private Handler myHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+               switch(msg.what){
+                   case 0:
+                       player_top_ly.setVisibility(View.GONE);
+                       player_bottom_ly.setVisibility(View.GONE);
+               }
+        }
+
+    };
 
     @Override
     protected void init() {
@@ -53,27 +81,92 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         if (!LibsChecker.checkVitamioLibs(this))
             return;
         Intent intent = getIntent();
-
         String vid = intent.getStringExtra("vid");
         initUI();
         loadData(vid);
+        mGestureDetector = new GestureDetector(this, new MyGestureListener());
 
+        myHandler.post(SeekBarUp);
+
+    }
+
+    public boolean onTouchEvent(MotionEvent event) {
+        
+        if (mGestureDetector.onTouchEvent(event))
+            return true;
+        switch(event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                player_top_ly.setVisibility(View.VISIBLE);
+                player_bottom_ly.setVisibility(View.VISIBLE);
+                break;
+            case MotionEvent.ACTION_UP:
+               myHandler.sendEmptyMessageDelayed(0, 3000);
+                break;
+        }
+         return super.onTouchEvent(event);
     }
 
     private void initUI() {
         player_buffer = (VideoView)this.findViewById(R.id.player_buffer);
+        player_top_ly = (RelativeLayout)this.findViewById(R.id.player_top_ly);
+        player_bottom_ly = (RelativeLayout)this.findViewById(R.id.player_bottom_ly);
         prepare_ly = (RelativeLayout)this.findViewById(R.id.player_prepare_ly);
+        suspend_btn = (Button)this.findViewById(R.id.player_suspend_btn);
         prepare_ly.setVisibility(View.GONE);
 
         player_title = (TextView)this.findViewById(R.id.player_title);
         player_btn_back = (TextView)this.findViewById(R.id.player_btn_back);
         player_btn_start = (TextView)this.findViewById(R.id.play_btn_start);
-        
+
         player_seekbar = (SeekBar)this.findViewById(R.id.player_seekbar);
 
         player_btn_back.setOnClickListener(buttonListener);
         player_btn_start.setOnClickListener(buttonListener);
-        
+        suspend_btn.setOnClickListener(buttonListener);
+
+        player_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // TODO Auto-generated method stub
+                   Log.e(progress+"progress", progress+"progress");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+                 player_buffer.pause();
+                 isStart = false;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+               int value = (int)(seekBar.getProgress()*player_buffer.getDuration()/seekBar.getMax());
+               player_buffer.seekTo(value);
+               player_buffer.start();
+               isStart = true;
+               
+            }
+        });
+
+    }
+
+    private Runnable SeekBarUp = new Runnable() {
+
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            upBarSize();
+            myHandler.postDelayed(SeekBarUp, 300);
+        }
+
+    };
+
+    private void upBarSize() {
+
+        player_seekbar.setProgress((int)(player_buffer.getCurrentPosition() * 100 / player_buffer
+                .getDuration()));
     }
 
     private View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -85,10 +178,14 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
                 player_buffer.stopPlayback();
                 finish();
             }
-            if(v == player_btn_start){
+            if (v == player_btn_start) {
                 playOrPause();
                 upStartBtnBg(isStart);
-                player_seekbar.setProgress((int)(player_buffer.getCurrentPosition()*100/player_buffer.getDuration()));
+
+            }
+            if(v== suspend_btn){
+                playOrPause();
+                upStartBtnBg(isStart);
             }
 
         }
@@ -135,11 +232,13 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
 
         } else {
             uri = Uri.parse(path);
+           
             player_buffer.setVideoURI(uri);
             // player_buffer.setMediaController(new MediaController(this));
             player_buffer.requestFocus();
             player_buffer.setOnInfoListener(this);
             player_buffer.setOnBufferingUpdateListener(this);
+            player_buffer.setBufferSize(512 * 1024);
             player_buffer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
                 @Override
@@ -150,37 +249,87 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
             });
             prepare_ly.setVisibility(View.GONE);
             playerStart();
-           
+            myHandler.sendEmptyMessageDelayed(0, 3000);
         }
     }
-    private void playerStart(){
-        if(player_buffer.isPlaying())
+
+    private void playerStart() {
+        suspend_btn.setVisibility(View.GONE);
+        if (player_buffer.isPlaying())
             return;
         player_buffer.start();
         isStart = true;
     }
-    private void playerPause(){
+
+    private void playerPause() {
         player_buffer.pause();
+        suspend_btn.setVisibility(View.VISIBLE);
         isStart = false;
     }
-    private void playOrPause(){
-        if(player_buffer.isPlaying()){
+
+    private void playOrPause() {
+        if (player_buffer.isPlaying()) {
             playerPause();
-        }else{
+        } else {
             playerStart();
         }
     }
-    
-    private void upStartBtnBg(boolean isStart){
-        if(isStart){
-            player_btn_start.setBackground(this.getResources().getDrawable(R.drawable.play_detail_btn_suspend));
-        }else{
-            player_btn_start.setBackground(this.getResources().getDrawable(R.drawable.play_detail_btn_start));
+
+    private void upStartBtnBg(boolean isStart) {
+        if (isStart) {
+            player_btn_start.setBackground(this.getResources().getDrawable(
+                    R.drawable.play_detail_btn_suspend));
+        } else {
+            player_btn_start.setBackground(this.getResources().getDrawable(
+                    R.drawable.play_detail_btn_start));
         }
     }
+
+    private class MyGestureListener extends SimpleOnGestureListener {
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            // TODO Auto-generated method stub
+            float oldX = e1.getX(), oldY = e1.getY();
+            float newX = e2.getX(), newY = e2.getY();
+            Log.e("oldx:" + oldX + ",oldY" + oldY + "newX:" + newX + "newY:" + newY, "oldx:" + oldX
+                    + ",oldY" + oldY + "newX:" + newX + "newY:" + newY);
+            return super.onScroll(e1, e2, distanceX, distanceY);
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            // TODO Auto-generated method stub
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+
+        @Override
+        public boolean onDoubleTap(MotionEvent e) {
+            // TODO Auto-generated method stub
+            return super.onDoubleTap(e);
+        }
+
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        player_buffer.pause();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        player_buffer.start();
 
     }
 
@@ -194,11 +343,13 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     public void onBufferingUpdate(MediaPlayer mp, int percent) {
         // TODO Auto-generated method stub
 
+        player_seekbar.setSecondaryProgress(percent);
     }
 
     @Override
     public boolean onInfo(MediaPlayer mp, int what, int extra) {
         // TODO Auto-generated method stub
+        Log.e("" + what + "ex" + extra, "" + what + "ex" + extra);
         return false;
     }
 

@@ -17,11 +17,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp" >
             </io.vov.vitamio.widget.VideoView>
-
+            <Button 
+                android:id="@+id/player_suspend_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/play_suspend"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignTop="@+id/player_buffer"
+                android:id="@+id/player_top_ly"
                 android:background="@color/half_translate" >
 
                 <TextView
@@ -47,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignBottom="@+id/player_buffer"
+                android:id="@+id/player_bottom_ly"
                 android:background="@color/half_translate" >
 
                 <TextView
@@ -64,6 +73,7 @@
                     android:orientation="vertical" >
 
                     <SeekBar
+                        style="@style/RolPlayer_SeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/player_seekbar"
