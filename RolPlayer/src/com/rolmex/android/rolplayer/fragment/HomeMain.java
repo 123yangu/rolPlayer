@@ -54,7 +54,7 @@ public class HomeMain extends Fragment {
     
     private Resources res;
     
-    private RelativeLayout hot_channel_ly;
+    private RelativeLayout hot_channel_ly,yl_channel_ly,gx_channel_ly,dm_channel_ly,yy_channel_ly,yc_channel_ly,dy_channel_ly,dsj_channel_ly;
     
     private StreadyGridView hot_gridView,yu_gridView,gx_gridView,pk_gridView,yy_gridView,yc_gridView,dy_gridView,dsj_gridView;
 
@@ -68,8 +68,6 @@ public class HomeMain extends Fragment {
         setupJazziness(TransitionEffect.Accordion);
         initUI(mView);
         initGridView(mView);
-        
-      
         return mView;
     }
     
@@ -81,6 +79,20 @@ public class HomeMain extends Fragment {
     private void initUI(View view){
         hot_channel_ly = (RelativeLayout)view.findViewById(R.id.hot_channel_ly);
         hot_channel_ly.setOnClickListener(buttonListener);
+        yl_channel_ly = (RelativeLayout)view.findViewById(R.id.yl_channel_ly);
+        yl_channel_ly.setOnClickListener(buttonListener);
+        gx_channel_ly = (RelativeLayout)view.findViewById(R.id.gx_channel_ly);
+        gx_channel_ly.setOnClickListener(buttonListener);
+        dm_channel_ly = (RelativeLayout)view.findViewById(R.id.dm_channel_ly);
+        dm_channel_ly.setOnClickListener(buttonListener);
+        yy_channel_ly = (RelativeLayout)view.findViewById(R.id.yy_channel_ly);
+        yy_channel_ly.setOnClickListener(buttonListener);
+        yc_channel_ly= (RelativeLayout)view.findViewById(R.id.yc_channel_ly);
+        yc_channel_ly.setOnClickListener(buttonListener);
+        dy_channel_ly = (RelativeLayout)view.findViewById(R.id.dy_channel_ly);
+        dy_channel_ly.setOnClickListener(buttonListener);
+        dsj_channel_ly = (RelativeLayout)view.findViewById(R.id.dsj_channel_ly);
+        dsj_channel_ly.setOnClickListener(buttonListener);
     }
     private View.OnClickListener buttonListener = new View.OnClickListener() {
         

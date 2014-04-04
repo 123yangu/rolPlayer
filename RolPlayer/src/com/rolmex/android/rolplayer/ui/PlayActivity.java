@@ -33,6 +33,7 @@ import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnInfoListener;
 import io.vov.vitamio.utils.Log;
+import io.vov.vitamio.utils.StringUtils;
 
 import io.vov.vitamio.widget.VideoView;
 
@@ -43,6 +44,8 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     private VideoView player_buffer;
 
     private TextView player_title, player_btn_back, player_btn_start;
+    
+    private TextView player_time;
 
     private String path = "http://119.167.146.12/fcs126.56.com/flvdownload/28/18/13950338514hd_clear.flv.mp4?t=_vvdH13rtMTryFzRk7W70w&r=47460&e=1395996812&v=1&s=1&tt=344&sz=24137946&vid=109381429";
 
@@ -100,7 +103,7 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
                 player_bottom_ly.setVisibility(View.VISIBLE);
                 break;
             case MotionEvent.ACTION_UP:
-               myHandler.sendEmptyMessageDelayed(0, 3000);
+               myHandler.sendEmptyMessageDelayed(0, 5000);
                 break;
         }
          return super.onTouchEvent(event);
@@ -119,6 +122,8 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         player_btn_start = (TextView)this.findViewById(R.id.play_btn_start);
 
         player_seekbar = (SeekBar)this.findViewById(R.id.player_seekbar);
+        
+        player_time = (TextView)this.findViewById(R.id.player_time);
 
         player_btn_back.setOnClickListener(buttonListener);
         player_btn_start.setOnClickListener(buttonListener);
@@ -158,11 +163,14 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         public void run() {
             // TODO Auto-generated method stub
             upBarSize();
+            upTime();
             myHandler.postDelayed(SeekBarUp, 300);
         }
 
     };
-
+    private void upTime(){
+        player_time.setText(StringUtils.generateTime(player_buffer.getCurrentPosition())+"/"+StringUtils.generateTime(player_buffer.getDuration()));
+    }
     private void upBarSize() {
 
         player_seekbar.setProgress((int)(player_buffer.getCurrentPosition() * 100 / player_buffer
@@ -249,7 +257,8 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
             });
             prepare_ly.setVisibility(View.GONE);
             playerStart();
-            myHandler.sendEmptyMessageDelayed(0, 3000);
+            upStartBtnBg(isStart);
+            myHandler.sendEmptyMessageDelayed(0,5000);
         }
     }
 
@@ -278,10 +287,10 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     private void upStartBtnBg(boolean isStart) {
         if (isStart) {
             player_btn_start.setBackground(this.getResources().getDrawable(
-                    R.drawable.play_detail_btn_suspend));
+                    R.drawable.play_detail_btn_start));
         } else {
             player_btn_start.setBackground(this.getResources().getDrawable(
-                    R.drawable.play_detail_btn_start));
+                    R.drawable.play_detail_btn_suspend));
         }
     }
 

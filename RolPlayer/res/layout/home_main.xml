@@ -78,6 +78,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/yl_channel_ly"
                 android:paddingBottom="@dimen/space_size_5"
                 android:paddingTop="@dimen/space_size_5" >
 
@@ -97,18 +98,18 @@
                     android:text="娱乐"
                     android:textSize="@dimen/text_size_16" />
 
-                <ImageView
+                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_channel_more_normal" >
-                </ImageView>
+                    android:background="@drawable/icon_channel_more" >
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/half_white" />
+                    android:background="@drawable/line_channel_bg" />
             </RelativeLayout>
 
             <com.rolmex.android.rolplayer.widget.StreadyGridView
@@ -122,6 +123,7 @@
             <!-- 搞笑 -->
 
             <RelativeLayout
+                android:id="@+id/gx_channel_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/space_size_5"
@@ -143,18 +145,18 @@
                     android:text="搞笑"
                     android:textSize="@dimen/text_size_16" />
 
-                <ImageView
+                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_channel_more_normal" >
-                </ImageView>
+                    android:background="@drawable/icon_channel_more" >
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/half_white" />
+                    android:background="@drawable/line_channel_bg" />
             </RelativeLayout>
 
             <com.rolmex.android.rolplayer.widget.StreadyGridView
@@ -165,9 +167,10 @@
                 android:numColumns="2"
                 android:verticalSpacing="@dimen/space_size_10" >
             </com.rolmex.android.rolplayer.widget.StreadyGridView>
-            <!-- 拍客 -->
+            <!-- 动漫 -->
 
             <RelativeLayout
+                android:id="@+id/dm_channel_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/space_size_5"
@@ -189,18 +192,18 @@
                     android:text="动漫"
                     android:textSize="@dimen/text_size_16" />
 
-                <ImageView
+                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_channel_more_normal" >
-                </ImageView>
+                    android:background="@drawable/icon_channel_more" >
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/half_white" />
+                    android:background="@drawable/line_channel_bg" />
             </RelativeLayout>
 
             <com.rolmex.android.rolplayer.widget.StreadyGridView
@@ -215,6 +218,7 @@
             <!-- 音乐 -->
 
             <RelativeLayout
+                android:id="@+id/yy_channel_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/space_size_5"
@@ -236,18 +240,18 @@
                     android:text="音乐"
                     android:textSize="@dimen/text_size_16" />
 
-                <ImageView
+                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_channel_more_normal" >
-                </ImageView>
+                    android:background="@drawable/icon_channel_more" >
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/half_white" />
+                    android:background="@drawable/line_channel_bg" />
             </RelativeLayout>
 
             <com.rolmex.android.rolplayer.widget.StreadyGridView
@@ -261,6 +265,7 @@
             <!-- 原创 -->
 
             <RelativeLayout
+                android:id="@+id/yc_channel_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/space_size_5"
@@ -282,18 +287,18 @@
                     android:text="原创"
                     android:textSize="@dimen/text_size_16" />
 
-                <ImageView
+                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_channel_more_normal" >
-                </ImageView>
+                    android:background="@drawable/icon_channel_more" >
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/half_white" />
+                    android:background="@drawable/line_channel_bg" />
             </RelativeLayout>
 
             <com.rolmex.android.rolplayer.widget.StreadyGridView
@@ -307,6 +312,7 @@
             <!-- 电影 -->
 
             <RelativeLayout
+                android:id="@+id/dy_channel_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/space_size_5"
@@ -328,18 +334,18 @@
                     android:text="电影"
                     android:textSize="@dimen/text_size_16" />
 
-                <ImageView
+                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_channel_more_normal" >
-                </ImageView>
+                    android:background="@drawable/icon_channel_more" >
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/half_white" />
+                    android:background="@drawable/line_channel_bg" />
             </RelativeLayout>
 
             <com.rolmex.android.rolplayer.widget.StreadyGridView
@@ -353,6 +359,7 @@
             <!-- 电视剧 -->
 
             <RelativeLayout
+                android:id="@+id/dsj_channel_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/space_size_5"
@@ -374,18 +381,18 @@
                     android:text="电视剧"
                     android:textSize="@dimen/text_size_16" />
 
-                <ImageView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_channel_more_normal" >
-                </ImageView>
+                    android:background="@drawable/icon_channel_more" >
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/half_white" />
+                    android:background="@drawable/line_channel_bg" />
             </RelativeLayout>
 
             <com.rolmex.android.rolplayer.widget.StreadyGridView

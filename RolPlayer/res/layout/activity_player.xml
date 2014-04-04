@@ -47,7 +47,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/player_btn_back"
-                    android:text="俺家讲得好"
+                    android:text="antking"
                     android:textColor="@color/white" />
             </RelativeLayout>
 
@@ -67,11 +67,16 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/play_btn_start"
                     android:orientation="vertical" >
-
+                    <TextView 
+                        android:id="@+id/player_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_8"                      
+                        />
                     <SeekBar
                         style="@style/RolPlayer_SeekBar"
                         android:layout_width="match_parent"
