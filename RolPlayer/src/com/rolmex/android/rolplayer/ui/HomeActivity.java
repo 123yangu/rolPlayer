@@ -5,6 +5,7 @@ import com.rolmex.android.rolplayer.R;
 import com.rolmex.android.rolplayer.fragment.HomeFragment;
 import com.wole56.sdk.Video;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -46,6 +47,10 @@ public class HomeActivity extends BaseActivity{
     protected int getLayout() {
         // TODO Auto-generated method stub
         return R.layout.activity_home;
+    }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
    
     

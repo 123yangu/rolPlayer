@@ -272,13 +272,17 @@ public class HomeMain extends Fragment {
             Object obj = parent.getAdapter().getItem(position);
             Intent intent = new Intent(mContext,PlayActivity.class);
             String uid = "";
+            String title = "";
             if(obj instanceof HotItemBean){
                  uid = ((HotItemBean)obj).vid;
+                 title = ((HotItemBean)obj).title;
             }else if(obj instanceof CommendItem){
                  uid  =((CommendItem)obj).vid;
+                 title = ((CommendItem)obj).title;
             }
             Log.e("antking_vid", uid);
             intent.putExtra("vid", uid);
+            intent.putExtra("title", title);
             startActivity(intent);
         }
         

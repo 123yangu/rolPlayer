@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 
+import io.vov.vitamio.utils.Log;
+
 public abstract class BaseActivity extends FragmentActivity{
     
     @Override
@@ -11,6 +13,7 @@ public abstract class BaseActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         showView(getLayout());
+        Log.e("Oncreate", "Oncreate");
     }
     
     protected void showView(int id){
