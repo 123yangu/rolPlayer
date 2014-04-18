@@ -12,8 +12,14 @@ import com.rolmex.android.rolplayer.task.Task.TaskCallback;
 import com.rolmex.android.rolplayer.widget.MarqueeText;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +28,7 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -49,9 +56,10 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     private RelativeLayout prepare_ly;
 
     private VideoView player_buffer;
+
     private MarqueeText player_title;
 
-    private TextView  player_btn_back, player_btn_start;
+    private TextView player_btn_back, player_btn_start;
 
     private TextView player_time;
 
@@ -76,6 +84,11 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
 
     private int screen_width, screen_height;
 
+    // 重力感应
+    private SensorManager mManager = null;
+
+    private Sensor mSensor = null;
+
     private Handler myHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -83,11 +96,12 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
                 case 0:
                     player_top_ly.setVisibility(View.GONE);
                     player_bottom_ly.setVisibility(View.GONE);
+                    break;
             }
         }
 
     };
-
+    @SuppressWarnings("deprecation")
     @Override
     protected void init() {
         // TODO Auto-generated method stub
@@ -95,6 +109,10 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
             return;
         Intent intent = getIntent();
         String vid = intent.getStringExtra("vid");
+
+        mManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        mSensor = mManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
         DisplayMetrics dm = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
         initUI();
@@ -107,32 +125,64 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
             screen_width = dm.heightPixels;
             screen_height = dm.widthPixels;
         }
-        Log.e("" + screen_width + "," + screen_height, "" + screen_width + "," + screen_height);
 
         loadData(vid);
         mGestureDetector = new GestureDetector(this, new MyGestureListener());
         myHandler.post(SeekBarUp);
 
     }
-    private String getPlayerTitle(){
+
+    /**
+     * 重力感应改变手机屏幕方向
+     */
+    private SensorEventListener sensorListner = new SensorEventListener() {
+
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            // TODO Auto-generated method stub
+            @SuppressWarnings("deprecation")
+            float x = event.values[SensorManager.DATA_X];
+            float y = event.values[SensorManager.DATA_Y];
+
+            if (x > 9) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+            if (y > 9) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            // TODO Auto-generated method stub
+
+        }
+
+    };
+
+    private String getPlayerTitle() {
         Intent intent = getIntent();
         return intent.getStringExtra("title");
     }
-    public boolean onTouchEvent(MotionEvent event) {
 
-        if (mGestureDetector.onTouchEvent(event))
-            return true;
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                player_top_ly.setVisibility(View.VISIBLE);
-                player_bottom_ly.setVisibility(View.VISIBLE);
-                break;
-            case MotionEvent.ACTION_UP:
-                myHandler.sendEmptyMessageDelayed(0, 5000);
-                break;
-        }
-        return super.onTouchEvent(event);
-    }
+//    public boolean onTouchEvent(MotionEvent event) {
+//
+//        if (mGestureDetector.onTouchEvent(event))
+//            return true;
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                Log.e("TOUCH_DOWN", "TOUCH_DOWN");
+//                player_top_ly.setVisibility(View.VISIBLE);
+//                player_bottom_ly.setVisibility(View.VISIBLE);
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                myHandler.sendEmptyMessageDelayed(0, 5000);
+//                Log.e("TOUCH_UP", "TOUCH_UP");
+//                break;
+//        }
+//        return super.onTouchEvent(event);
+//    }
 
     private void initUI() {
         player_buffer = (VideoView)this.findViewById(R.id.player_buffer);
@@ -147,7 +197,6 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         player_btn_start = (TextView)this.findViewById(R.id.play_btn_start);
         player_title.setText(getPlayerTitle());
 
-
         player_seekbar = (SeekBar)this.findViewById(R.id.player_seekbar);
 
         player_time = (TextView)this.findViewById(R.id.player_time);
@@ -156,6 +205,27 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         player_btn_back.setOnClickListener(buttonListener);
         player_btn_start.setOnClickListener(buttonListener);
         suspend_btn.setOnClickListener(buttonListener);
+       
+        player_buffer.setOnTouchListener(new View.OnTouchListener() {
+            
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                switch(event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+
+                      player_top_ly.setVisibility(View.VISIBLE);
+                      player_bottom_ly.setVisibility(View.VISIBLE);
+                      break;
+                  case MotionEvent.ACTION_UP:
+                      myHandler.sendEmptyMessageDelayed(0, 5000);
+
+                      break;
+                        
+                }
+                return true;
+            }
+        });
 
         player_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -171,7 +241,6 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
                 player_buffer.pause();
                 isStart = false;
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -249,7 +318,7 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         }
         Log.e(result.msg, "antking_info");
         InfoItem info = result.info;
-       
+
         List<FileItem> list = info.rfiles;
         Log.e(list.size() + "", list.size() + "");
         String path = "";
@@ -363,6 +432,7 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     protected void onPause() {
         super.onPause();
         Log.e("onPause", "onPause");
+        mManager.unregisterListener(sensorListner);
         player_buffer.pause();
 
     }
@@ -371,6 +441,7 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
     protected void onResume() {
         super.onResume();
         Log.e("onResume", "onResume");
+        mManager.registerListener(sensorListner, mSensor, SensorManager.SENSOR_DELAY_GAME);
         player_buffer.start();
 
     }

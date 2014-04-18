@@ -26,4 +26,13 @@
         <item name="android:paddingLeft">14dip</item>
         <item name="android:paddingRight">14dip</item>
     </style>
+     <style name="pager_rb">
+        <item name="android:textSize">@dimen/text_size_10</item>  
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@drawable/rb_btn</item>
+        
+        <item name="android:singleLine">false</item>
+
+    </style>
 </resources>

@@ -8,11 +8,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <com.rolmex.android.rolplayer.widget.JazzyViewPager
-            android:id="@+id/home_main_viewpager"
+        <RelativeLayout
+            android:id="@+id/home_main_pager_rl"
             android:layout_width="match_parent"
-            android:layout_height="150dp" >
-        </com.rolmex.android.rolplayer.widget.JazzyViewPager>
+            android:layout_height="wrap_content" >
+
+            <com.rolmex.android.rolplayer.widget.JazzyViewPager
+                android:id="@+id/home_main_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" >
+            </com.rolmex.android.rolplayer.widget.JazzyViewPager>
+            <RadioGroup 
+                android:id="@+id/home_main_pager_bottom_rg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal"
+                android:layout_alignBottom= "@+id/home_main_viewpager"
+                >
+               
+            </RadioGroup>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,9 +92,9 @@
             <!-- 娱乐 -->
 
             <RelativeLayout
+                android:id="@+id/yl_channel_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/yl_channel_ly"
                 android:paddingBottom="@dimen/space_size_5"
                 android:paddingTop="@dimen/space_size_5" >
 
@@ -98,7 +114,7 @@
                     android:text="娱乐"
                     android:textSize="@dimen/text_size_16" />
 
-                 <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -145,7 +161,7 @@
                     android:text="搞笑"
                     android:textSize="@dimen/text_size_16" />
 
-                 <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -192,7 +208,7 @@
                     android:text="动漫"
                     android:textSize="@dimen/text_size_16" />
 
-                 <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -240,7 +256,7 @@
                     android:text="音乐"
                     android:textSize="@dimen/text_size_16" />
 
-                 <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -287,7 +303,7 @@
                     android:text="原创"
                     android:textSize="@dimen/text_size_16" />
 
-                 <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -334,7 +350,7 @@
                     android:text="电影"
                     android:textSize="@dimen/text_size_16" />
 
-                 <TextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
