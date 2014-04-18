@@ -30,6 +30,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -129,7 +130,18 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
         loadData(vid);
         mGestureDetector = new GestureDetector(this, new MyGestureListener());
         myHandler.post(SeekBarUp);
+        setScreenBriness(240);
 
+    }
+    /**
+     * 设置屏幕亮度
+     * @param brightness
+     */
+    private void setScreenBriness(int brightness){
+        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+        lp.screenBrightness = Float.valueOf(brightness/255f);
+        this.getWindow().setAttributes(lp);
+        
     }
 
     /**
