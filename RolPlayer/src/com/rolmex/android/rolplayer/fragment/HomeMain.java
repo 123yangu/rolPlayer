@@ -9,6 +9,7 @@ import com.rolmex.android.rolplayer.model.CommendItem;
 import com.rolmex.android.rolplayer.model.CommendResult;
 import com.rolmex.android.rolplayer.model.HotItemBean;
 import com.rolmex.android.rolplayer.model.Result;
+import com.rolmex.android.rolplayer.service.WindowPlayer;
 import com.rolmex.android.rolplayer.task.CommendTask;
 import com.rolmex.android.rolplayer.task.CommendTask.CTaskCallback;
 import com.rolmex.android.rolplayer.task.Task;
@@ -414,6 +415,8 @@ public class HomeMain extends Fragment {
             intent.putExtra("vid", uid);
             intent.putExtra("title", title);
             startActivity(intent);
+//            Intent serviceIntent = new Intent(mContext,WindowPlayer.class);
+//            mContext.startService(serviceIntent);
         }
 
     };

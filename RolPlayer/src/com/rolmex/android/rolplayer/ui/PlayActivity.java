@@ -7,6 +7,7 @@ import com.rolmex.android.rolplayer.R;
 import com.rolmex.android.rolplayer.model.FileItem;
 import com.rolmex.android.rolplayer.model.InfoItem;
 import com.rolmex.android.rolplayer.model.Result;
+import com.rolmex.android.rolplayer.service.WindowPlayer;
 import com.rolmex.android.rolplayer.task.Task;
 import com.rolmex.android.rolplayer.task.Task.TaskCallback;
 import com.rolmex.android.rolplayer.widget.MarqueeText;
@@ -236,6 +237,21 @@ public class PlayActivity extends BaseActivity implements OnInfoListener, OnBuff
                         
                 }
                 return true;
+            }
+        });
+        player_title.setOnClickListener(new View.OnClickListener() {
+            
+            
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                player_buffer.stopPlayback();
+                Intent intent = new Intent(PlayActivity.this,WindowPlayer.class);
+                intent.putExtra("screen_width", screen_width);
+                intent.putExtra("screen_height", screen_height);
+                startService(intent);
+                
+                finish();
             }
         });
 
