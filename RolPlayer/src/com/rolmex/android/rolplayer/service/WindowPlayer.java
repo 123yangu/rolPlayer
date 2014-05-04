@@ -19,8 +19,9 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
-import android.widget.FrameLayout.LayoutParams;
+
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -87,10 +88,12 @@ public class WindowPlayer extends Service implements OnInfoListener, OnBuffering
     private View viFloatingWindow;
 
     public void onCreate() {
+       
 
         super.onCreate();
 
     }
+    
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -199,21 +202,29 @@ public class WindowPlayer extends Service implements OnInfoListener, OnBuffering
     }
 
     private void createFloaingWindow() {
-        windowManager = (WindowManager)getApplicationContext().getSystemService("window");
+        
+
+//        windowManager = (WindowManager)getApplicationContext().getSystemService("window");
+        windowManager = (WindowManager)getApplicationContext().getSystemService(WINDOW_SERVICE);
+        
+        
+        
         wmParams = ((MyApplication)getApplication()).getMywmParams();
-        wmParams.type = 2002;
-      
-       
-        wmParams.flags |= 8;
+//        wmParams.type=2002;
+//        wmParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT | WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY;
+        wmParams.type= LayoutParams.TYPE_SYSTEM_ALERT | LayoutParams.TYPE_SYSTEM_OVERLAY;
+     
+//        wmParams.flags |= 8;
+        wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         wmParams.gravity = Gravity.LEFT | Gravity.TOP;
         wmParams.x = 0;
         wmParams.y = 0;
-        wmParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        wmParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         wmParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         wmParams.format = PixelFormat.TRANSLUCENT;
         wmParams.dimAmount = 1.0f;
-        wmParams.alpha = 1.0f;
-
+        wmParams.alpha = 1.0f;       
         windowManager.addView(viFloatingWindow, wmParams);
        
         viFloatingWindow.setOnTouchListener(new OnTouchListener() {

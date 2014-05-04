@@ -303,7 +303,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int accordion=0x7f090017;
-        public static final int action_settings=0x7f090053;
+        public static final int action_settings=0x7f090054;
         public static final int both=0x7f090003;
         public static final int channel1_left=0x7f090035;
         public static final int channel2_left=0x7f090038;
@@ -319,7 +319,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dm_channel_ly=0x7f09003a;
         public static final int dsj_channel_ly=0x7f090046;
         public static final int dy_channel_ly=0x7f090043;
-        public static final int fl_inner=0x7f09004e;
+        public static final int fl_inner=0x7f09004f;
         public static final int flip=0x7f090008;
         public static final int fliphorizontal=0x7f090011;
         public static final int flipvertical=0x7f090010;
@@ -348,11 +348,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main_yule_gridview=0x7f090036;
         public static final int main_yy_gridview=0x7f09003f;
         public static final int manualOnly=0x7f090004;
-        public static final int mediacontroller_file_name=0x7f09004d;
-        public static final int mediacontroller_play_pause=0x7f090049;
-        public static final int mediacontroller_seekbar=0x7f09004c;
-        public static final int mediacontroller_time_current=0x7f09004a;
-        public static final int mediacontroller_time_total=0x7f09004b;
+        public static final int mediacontroller_file_name=0x7f09004e;
+        public static final int mediacontroller_play_pause=0x7f09004a;
+        public static final int mediacontroller_seekbar=0x7f09004d;
+        public static final int mediacontroller_time_current=0x7f09004b;
+        public static final int mediacontroller_time_total=0x7f09004c;
+        public static final int myView=0x7f090049;
         public static final int play_btn_start=0x7f090020;
         public static final int player_bottom_ly=0x7f09001f;
         public static final int player_btn_back=0x7f09001d;
@@ -369,10 +370,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pullFromEnd=0x7f090002;
         public static final int pullFromStart=0x7f090001;
         public static final int pullUpFromBottom=0x7f090006;
-        public static final int pull_to_refresh_image=0x7f09004f;
-        public static final int pull_to_refresh_progress=0x7f090050;
-        public static final int pull_to_refresh_sub_text=0x7f090052;
-        public static final int pull_to_refresh_text=0x7f090051;
+        public static final int pull_to_refresh_image=0x7f090050;
+        public static final int pull_to_refresh_progress=0x7f090051;
+        public static final int pull_to_refresh_sub_text=0x7f090053;
+        public static final int pull_to_refresh_text=0x7f090052;
         public static final int rotate=0x7f090007;
         public static final int rotatedown=0x7f090016;
         public static final int rotateup=0x7f090015;
@@ -396,10 +397,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int fragment_home=0x7f030005;
         public static final int home_catory=0x7f030006;
         public static final int home_main=0x7f030007;
-        public static final int mediacontroller=0x7f030008;
-        public static final int pull_to_refresh_header_horizontal=0x7f030009;
-        public static final int pull_to_refresh_header_vertical=0x7f03000a;
-        public static final int radiobutton=0x7f03000b;
+        public static final int main=0x7f030008;
+        public static final int mediacontroller=0x7f030009;
+        public static final int pull_to_refresh_header_horizontal=0x7f03000a;
+        public static final int pull_to_refresh_header_vertical=0x7f03000b;
+        public static final int radiobutton=0x7f03000c;
     }
     public static final class menu {
         public static final int splash=0x7f0c0000;
